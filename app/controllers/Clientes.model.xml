@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataModel baseSchema="dbo" baseTable="Clientes" alias="Clientes" created="2020-10-18T13:51:25" modified="2020-10-18T13:51:27" x="20" y="20" xmlns="urn:schemas-codeontime-com:data-model">
+  <foreignKeys>
+    <foreignKey id="IdTipoPersona" parentTableSchema="dbo" parentTableName="TipoPersona" x="315" y="20">
+      <foreignKeyColumn columnName="IdTipoPersona" parentColumnName="idTipoPersona" />
+    </foreignKey>
+  </foreignKeys>
+  <columns>
+    <column name="IdCliente" fieldName="IDCliente" label="Id Cliente" />
+    <column name="Nombre1" fieldName="Nombre1" label="Nombre1" />
+    <column name="Nombre2" fieldName="Nombre2" label="Nombre2" />
+    <column name="Apellido1" fieldName="Apellido1" label="Apellido1" />
+    <column name="Apellido2" fieldName="Apellido2" label="Apellido2" />
+    <column name="Direccion" fieldName="Direccion" label="Direccion" />
+    <column name="Telefono" fieldName="Telefono" label="Telefono" />
+    <column name="Nit" fieldName="Nit" label="Nit" />
+    <column name="IdTipoPersona" fieldName="IDTipoPersona" label="Id Tipo Persona" aliasColumnName="Descripcion" aliasForeignKey="IdTipoPersona" />
+    <column name="Descripcion" fieldName="IDTipoPersonaDescripcion" label="Id Tipo Persona Descripcion" foreignKey="IdTipoPersona" />
+  </columns>
+</dataModel>

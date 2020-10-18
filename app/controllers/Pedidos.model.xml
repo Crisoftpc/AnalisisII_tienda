@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataModel baseSchema="dbo" baseTable="Pedidos" alias="Pedidos" created="2020-10-18T13:50:13" modified="2020-10-18T13:50:34" x="20" y="20" xmlns="urn:schemas-codeontime-com:data-model">
+  <foreignKeys>
+    <foreignKey id="TheIdCliente" parentTableSchema="dbo" parentTableName="Clientes" x="310" y="20">
+      <foreignKeyColumn columnName="IdCliente" parentColumnName="IdCliente" />
+    </foreignKey>
+    <foreignKey id="TheIdClienteIdTipoPersona" parentTableSchema="dbo" parentTableName="TipoPersona" baseForeignKey="TheIdCliente" x="605" y="20">
+      <foreignKeyColumn columnName="IdTipoPersona" parentColumnName="idTipoPersona" />
+    </foreignKey>
+    <foreignKey id="TheEstadoPedido" parentTableSchema="dbo" parentTableName="EstadoPedido" x="310" y="205">
+      <foreignKeyColumn columnName="EstadoPedido" parentColumnName="EstadoPedido" />
+    </foreignKey>
+    <foreignKey id="TheEstadoPedidoEstado" parentTableSchema="dbo" parentTableName="Estado" baseForeignKey="TheEstadoPedido" x="902" y="20">
+      <foreignKeyColumn columnName="Estado" parentColumnName="Estado" />
+    </foreignKey>
+    <foreignKey id="IdRepartidor" parentTableSchema="dbo" parentTableName="Clientes" x="310" y="367">
+      <foreignKeyColumn columnName="IdRepartidor" parentColumnName="IdCliente" />
+    </foreignKey>
+    <foreignKey id="IdRepartidorIdTipoPersona" parentTableSchema="dbo" parentTableName="TipoPersona" baseForeignKey="IdRepartidor" x="1158" y="20">
+      <foreignKeyColumn columnName="IdTipoPersona" parentColumnName="idTipoPersona" />
+    </foreignKey>
+  </foreignKeys>
+  <columns>
+    <column name="IdPedido" fieldName="IDPedido" label="Id Pedido" />
+    <column name="IdCliente" fieldName="IDCliente" label="Id Cliente" aliasColumnName="Nombre1" aliasForeignKey="TheIdCliente" />
+    <column name="Nombre1" fieldName="TheIDClienteNombre1" label="Id Cliente Nombre1" foreignKey="TheIdCliente" />
+    <column name="Descripcion" fieldName="TheIDClienteIDTipoPersonaDescripcion" label="Id Cliente Id Tipo Persona Descripcion" foreignKey="TheIdClienteIdTipoPersona" />
+    <column name="FechaCreacion" fieldName="FechaCreacion" label="Fecha Creacion" format="g" />
+    <column name="FechaAEntregar" fieldName="FechaAentregar" label="Fecha A Entregar" format="g" />
+    <column name="FechaEntregado" fieldName="FechaEntregado" label="Fecha Entregado" format="g" />
+    <column name="EstadoPedido" fieldName="EstadoPedido" label="Estado Pedido" aliasColumnName="Descripcion" aliasForeignKey="TheEstadoPedido" />
+    <column name="Descripcion" fieldName="TheEstadoPedidoDescripcion" label="Estado Pedido Descripcion" foreignKey="TheEstadoPedido" />
+    <column name="Nombre" fieldName="TheEstadoPedidoEstadoNombre" label="Estado Pedido Estado Nombre" foreignKey="TheEstadoPedidoEstado" />
+    <column name="IdRepartidor" fieldName="IDRepartidor" label="Id Repartidor" aliasColumnName="Nombre1" aliasForeignKey="IdRepartidor" />
+    <column name="Nombre1" fieldName="IDRepartidorNombre1" label="Id Repartidor Nombre1" foreignKey="IdRepartidor" />
+    <column name="Descripcion" fieldName="IDRepartidorIDTipoPersonaDescripcion" label="Id Repartidor Id Tipo Persona Descripcion" foreignKey="IdRepartidorIdTipoPersona" />
+  </columns>
+</dataModel>

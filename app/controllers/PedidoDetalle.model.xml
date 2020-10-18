@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataModel baseSchema="dbo" baseTable="PedidoDetalle" alias="PedidoDetalle" created="2020-10-18T13:53:33" modified="2020-10-18T13:54:44" x="20" y="20" xmlns="urn:schemas-codeontime-com:data-model">
+  <foreignKeys>
+    <foreignKey id="CatalogoProductosidCategoria" parentTableSchema="dbo" parentTableName="Categoria" baseForeignKey="CatalogoProductos" x="676" y="20">
+      <foreignKeyColumn columnName="idCategoria" parentColumnName="idCategoria" />
+    </foreignKey>
+    <foreignKey id="CatalogoProductosidDistribuidor" parentTableSchema="dbo" parentTableName="Distribuidores" baseForeignKey="CatalogoProductos" x="676" y="184">
+      <foreignKeyColumn columnName="idDistribuidor" parentColumnName="IdDistribuidor" />
+    </foreignKey>
+    <foreignKey id="CatalogoProductosEstado" parentTableSchema="dbo" parentTableName="Estado" baseForeignKey="CatalogoProductos" x="676" y="383">
+      <foreignKeyColumn columnName="Estado" parentColumnName="Estado" />
+    </foreignKey>
+    <foreignKey id="CatalogoProductosidProducto" parentTableSchema="dbo" parentTableName="Productos" baseForeignKey="CatalogoProductos" x="676" y="540">
+      <foreignKeyColumn columnName="idProducto" parentColumnName="IdProducto" />
+    </foreignKey>
+    <foreignKey id="CatalogoProductos" parentTableSchema="dbo" parentTableName="CatalogoProductos" type="1-to-1" x="350" y="20">
+      <foreignKeyColumn columnName="IdPedidoDetalle" parentColumnName="idProductoCatalogo" />
+    </foreignKey>
+    <foreignKey id="TheIdPedido" parentTableSchema="dbo" parentTableName="Pedidos" x="973" y="615">
+      <foreignKeyColumn columnName="IdPedido" parentColumnName="IdPedido" />
+    </foreignKey>
+    <foreignKey id="TheIdPedidoIdCliente" parentTableSchema="dbo" parentTableName="Clientes" baseForeignKey="TheIdPedido" x="1246" y="20">
+      <foreignKeyColumn columnName="IdCliente" parentColumnName="IdCliente" />
+    </foreignKey>
+    <foreignKey id="TheIdPedidoIdRepartidor" parentTableSchema="dbo" parentTableName="Clientes" baseForeignKey="TheIdPedido" x="1246" y="205">
+      <foreignKeyColumn columnName="IdRepartidor" parentColumnName="IdCliente" />
+    </foreignKey>
+    <foreignKey id="TheIdPedidoEstadoPedido" parentTableSchema="dbo" parentTableName="EstadoPedido" baseForeignKey="TheIdPedido" x="1246" y="388">
+      <foreignKeyColumn columnName="EstadoPedido" parentColumnName="EstadoPedido" />
+    </foreignKey>
+  </foreignKeys>
+  <columns>
+    <column name="IdPedidoDetalle" fieldName="IDPedidoDetalle" label="Id Pedido Detalle" aliasColumnName="NombreCategoria" aliasForeignKey="CatalogoProductosidCategoria" />
+    <column name="NombreCategoria" fieldName="CatalogoProductosidCategoriaNombreCategoria" label="Catalogo Productosid Categoria Nombre Categoria" foreignKey="CatalogoProductosidCategoria" />
+    <column name="Nombre" fieldName="CatalogoProductosidDistribuidorNombre" label="Catalogo Productosid Distribuidor Nombre" foreignKey="CatalogoProductosidDistribuidor" />
+    <column name="Nombre" fieldName="CatalogoProductosEstadoNombre" label="Catalogo Productos Estado Nombre" foreignKey="CatalogoProductosEstado" />
+    <column name="NombreProducto" fieldName="CatalogoProductosidProductoNombreProducto" label="Catalogo Productosid Producto Nombre Producto" foreignKey="CatalogoProductosidProducto" />
+    <column name="idProductoCatalogo" fieldName="CatalogoProductosIDProductoCatalogo" label="Catalogo Productos Id Producto Catalogo" foreignKey="CatalogoProductos" />
+    <column name="idDistribuidor" fieldName="CatalogoProductosIDDistribuidor" label="Catalogo Productos Id Distribuidor" foreignKey="CatalogoProductos" />
+    <column name="idCategoria" fieldName="CatalogoProductosIDCategoria" label="Catalogo Productos Id Categoria" foreignKey="CatalogoProductos" />
+    <column name="idProducto" fieldName="CatalogoProductosIDProducto" label="Catalogo Productos Id Producto" foreignKey="CatalogoProductos" />
+    <column name="Precio" fieldName="CatalogoProductosPrecio" label="Catalogo Productos Precio" foreignKey="CatalogoProductos" />
+    <column name="Descripcion" fieldName="CatalogoProductosDescripcion" label="Catalogo Productos Descripcion" foreignKey="CatalogoProductos" />
+    <column name="Estado" fieldName="CatalogoProductosEstado" label="Catalogo Productos Estado" foreignKey="CatalogoProductos" />
+    <column name="IdPedido" fieldName="IDPedido" label="Id Pedido" />
+    <column name="IdCliente" fieldName="TheIDPedidoIDCliente" foreignKey="TheIdPedido" />
+    <column name="Nombre1" fieldName="TheIDPedidoIDClienteNombre1" label="Id Pedido Id Cliente Nombre1" foreignKey="TheIdPedidoIdCliente" />
+    <column name="Nombre1" fieldName="TheIDPedidoIDRepartidorNombre1" label="Id Pedido Id Repartidor Nombre1" foreignKey="TheIdPedidoIdRepartidor" />
+    <column name="Descripcion" fieldName="TheIDPedidoEstadoPedidoDescripcion" label="Id Pedido Estado Pedido Descripcion" foreignKey="TheIdPedidoEstadoPedido" />
+    <column name="idProductoCatalogo" fieldName="IDProductoCatalogo" label="id Producto Catalogo" />
+  </columns>
+</dataModel>

@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataController name="Pedidos" conflictDetection="overwriteChanges" label="Pedidos" xmlns="urn:schemas-codeontime-com:data-aquarium">
+  <commands>
+    <command id="command1" type="Text">
+      <text><![CDATA[
+select
+	"Pedidos"."IdPedido" "IDPedido"
+	,"Pedidos"."IdCliente" "IDCliente"
+	,"TheIdCliente"."Nombre1" "TheIDClienteNombre1"
+	,"TheIdClienteIdTipoPersona"."Descripcion" "TheIDClienteIDTipoPersonaDescripcion"
+	,"Pedidos"."FechaCreacion" "FechaCreacion"
+	,"Pedidos"."FechaAEntregar" "FechaAentregar"
+	,"Pedidos"."FechaEntregado" "FechaEntregado"
+	,"Pedidos"."EstadoPedido" "EstadoPedido"
+	,"TheEstadoPedido"."Descripcion" "TheEstadoPedidoDescripcion"
+	,"TheEstadoPedidoEstado"."Nombre" "TheEstadoPedidoEstadoNombre"
+	,"Pedidos"."IdRepartidor" "IDRepartidor"
+	,"IdRepartidor"."Nombre1" "IDRepartidorNombre1"
+	,"IdRepartidorIdTipoPersona"."Descripcion" "IDRepartidorIDTipoPersonaDescripcion"
+from "dbo"."Pedidos" "Pedidos"
+	left join "dbo"."Clientes" "TheIdCliente" on "Pedidos"."IdCliente" = "TheIdCliente"."IdCliente"
+	left join "dbo"."TipoPersona" "TheIdClienteIdTipoPersona" on "TheIdCliente"."IdTipoPersona" = "TheIdClienteIdTipoPersona"."idTipoPersona"
+	left join "dbo"."EstadoPedido" "TheEstadoPedido" on "Pedidos"."EstadoPedido" = "TheEstadoPedido"."EstadoPedido"
+	left join "dbo"."Estado" "TheEstadoPedidoEstado" on "TheEstadoPedido"."Estado" = "TheEstadoPedidoEstado"."Estado"
+	left join "dbo"."Clientes" "IdRepartidor" on "Pedidos"."IdRepartidor" = "IdRepartidor"."IdCliente"
+	left join "dbo"."TipoPersona" "IdRepartidorIdTipoPersona" on "IdRepartidor"."IdTipoPersona" = "IdRepartidorIdTipoPersona"."idTipoPersona"
+]]></text>
+    </command>
+    <command id="IdPedidoIdentityCommand" type="Text" event="Inserted">
+      <text><![CDATA[select @@identity]]></text>
+      <output>
+        <fieldOutput fieldName="IDPedido" />
+      </output>
+    </command>
+  </commands>
+  <fields>
+    <field name="IDPedido" type="Int32" allowNulls="false" isPrimaryKey="true" label="Id Pedido" readOnly="true" />
+    <field name="IDCliente" type="Int32" label="Id Cliente" showInSummary="true">
+      <items style="Lookup" dataController="Clientes" newDataView="createForm1" dataValueField="IDCliente" dataTextField="Nombre1" copy="TheIDClienteIDTipoPersonaDescripcion=IDTipoPersonaDescripcion" />
+    </field>
+    <field name="TheIDClienteNombre1" type="String" readOnly="true" label="Id Cliente Nombre1" length="250" />
+    <field name="TheIDClienteIDTipoPersonaDescripcion" type="String" readOnly="true" label="Id Cliente Id Tipo Persona Descripcion" length="250" />
+    <field name="FechaCreacion" type="DateTime" dataFormatString="g" label="Fecha Creacion" showInSummary="true" />
+    <field name="FechaAentregar" type="DateTime" dataFormatString="g" label="Fecha A Entregar" showInSummary="true" />
+    <field name="FechaEntregado" type="DateTime" dataFormatString="g" label="Fecha Entregado" showInSummary="true" />
+    <field name="EstadoPedido" type="Int32" label="Estado Pedido" showInSummary="true">
+      <items style="Lookup" dataController="EstadoPedido" newDataView="createForm1" dataValueField="EstadoPedido" dataTextField="Descripcion" copy="TheEstadoPedidoEstadoNombre=TheEstadoNombre" />
+    </field>
+    <field name="TheEstadoPedidoDescripcion" type="String" readOnly="true" label="Estado Pedido Descripcion" length="150" />
+    <field name="TheEstadoPedidoEstadoNombre" type="String" readOnly="true" label="Estado Pedido Estado Nombre" length="50" />
+    <field name="IDRepartidor" type="Int32" label="Id Repartidor">
+      <items style="Lookup" dataController="Clientes" newDataView="createForm1" dataValueField="IDCliente" dataTextField="Nombre1" copy="IDRepartidorIDTipoPersonaDescripcion=IDTipoPersonaDescripcion" />
+    </field>
+    <field name="IDRepartidorNombre1" type="String" readOnly="true" label="Id Repartidor Nombre1" length="250" />
+    <field name="IDRepartidorIDTipoPersonaDescripcion" type="String" readOnly="true" label="Id Repartidor Id Tipo Persona Descripcion" length="250" />
+  </fields>
+  <views>
+    <view id="grid1" type="Grid" commandId="command1" label="Pedidos">
+      <headerText>$DefaultGridViewDescription</headerText>
+      <dataFields>
+        <dataField fieldName="IDCliente" aliasFieldName="TheIDClienteNombre1" />
+        <dataField fieldName="TheIDClienteIDTipoPersonaDescripcion" />
+        <dataField fieldName="FechaCreacion" columns="20" />
+        <dataField fieldName="FechaAentregar" columns="20" />
+        <dataField fieldName="FechaEntregado" columns="20" />
+        <dataField fieldName="EstadoPedido" aliasFieldName="TheEstadoPedidoDescripcion" />
+        <dataField fieldName="TheEstadoPedidoEstadoNombre" columns="50" />
+        <dataField fieldName="IDRepartidor" aliasFieldName="IDRepartidorNombre1" />
+        <dataField fieldName="IDRepartidorIDTipoPersonaDescripcion" />
+      </dataFields>
+    </view>
+    <view id="editForm1" type="Form" commandId="command1" label="Review Pedidos">
+      <headerText>$DefaultEditViewDescription</headerText>
+      <categories>
+        <category id="c1" headerText="Pedidos" flow="NewColumn">
+          <description><![CDATA[$DefaultEditDescription]]></description>
+          <dataFields>
+            <dataField fieldName="IDCliente" aliasFieldName="TheIDClienteNombre1" />
+            <dataField fieldName="TheIDClienteIDTipoPersonaDescripcion" />
+            <dataField fieldName="FechaCreacion" columns="20" />
+            <dataField fieldName="FechaAentregar" columns="20" />
+            <dataField fieldName="FechaEntregado" columns="20" />
+            <dataField fieldName="EstadoPedido" aliasFieldName="TheEstadoPedidoDescripcion" />
+            <dataField fieldName="TheEstadoPedidoEstadoNombre" columns="50" />
+            <dataField fieldName="IDRepartidor" aliasFieldName="IDRepartidorNombre1" />
+            <dataField fieldName="IDRepartidorIDTipoPersonaDescripcion" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+    <view id="createForm1" type="Form" commandId="command1" label="New Pedidos">
+      <headerText>$DefaultCreateViewDescription</headerText>
+      <categories>
+        <category id="c1" flow="NewColumn">
+          <description><![CDATA[$DefaultNewDescription]]></description>
+          <dataFields>
+            <dataField fieldName="IDCliente" aliasFieldName="TheIDClienteNombre1" />
+            <dataField fieldName="TheIDClienteIDTipoPersonaDescripcion" />
+            <dataField fieldName="FechaCreacion" columns="20" />
+            <dataField fieldName="FechaAentregar" columns="20" />
+            <dataField fieldName="FechaEntregado" columns="20" />
+            <dataField fieldName="EstadoPedido" aliasFieldName="TheEstadoPedidoDescripcion" />
+            <dataField fieldName="TheEstadoPedidoEstadoNombre" columns="50" />
+            <dataField fieldName="IDRepartidor" aliasFieldName="IDRepartidorNombre1" />
+            <dataField fieldName="IDRepartidorIDTipoPersonaDescripcion" />
+          </dataFields>
+        </category>
+      </categories>
+    </view>
+  </views>
+  <actions>
+    <actionGroup id="ag1" scope="Grid">
+      <action id="a1" commandName="Select" commandArgument="editForm1" />
+      <action id="a2" commandName="Edit" />
+      <action id="a3" commandName="Delete" />
+      <action id="a6" />
+      <action id="a7" commandName="New" commandArgument="grid1" />
+      <action id="a8" commandName="Duplicate" commandArgument="createForm1" />
+    </actionGroup>
+    <actionGroup id="ag2" scope="Form">
+      <action id="a1" commandName="Edit" />
+      <action id="a2" commandName="Delete" />
+      <action id="a3" commandName="Cancel" />
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" commandArgument="Save" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" commandArgument="Save" />
+      <action id="a7" whenLastCommandName="New" commandName="Insert" commandArgument="SaveAndNew" />
+      <action id="a8" whenLastCommandName="New" commandName="Cancel" />
+      <action id="a9" whenLastCommandName="Duplicate" commandName="Insert" />
+      <action id="a10" whenLastCommandName="Duplicate" commandName="Cancel" />
+      <action id="a13" whenLastCommandName="Insert" whenLastCommandArgument="Save" whenView="createForm1" commandName="Select" commandArgument="editForm1" whenClientScript="this.hasDetails()" />
+      <action id="a14" whenLastCommandName="Insert" whenLastCommandArgument="SaveAndNew" commandName="New" commandArgument="createForm1" />
+    </actionGroup>
+    <actionGroup id="ag3" scope="ActionBar" headerText="New" flat="true">
+      <action id="a1" commandName="New" commandArgument="createForm1" cssClass="NewIcon" />
+    </actionGroup>
+    <actionGroup id="ag4" scope="ActionBar" headerText="Edit/Delete" flat="true">
+      <action id="a1" whenKeySelected="true" commandName="Edit" commandArgument="editForm1" cssClass="EditIcon" whenView="grid1" />
+      <action id="a2" whenKeySelected="true" commandName="Delete" cssClass="DeleteIcon" whenView="grid1" />
+    </actionGroup>
+    <actionGroup id="ag5" scope="ActionBar" headerText="Actions">
+      <action id="a1" commandName="ExportCsv" />
+      <action id="a2" />
+      <action id="a3" commandName="ExportRowset" />
+      <action id="a4" commandName="ExportRss" />
+      <action id="a5" />
+      <action id="a6" commandName="Import" commandArgument="createForm1" />
+      <action id="a7" commandName="DataSheet" />
+      <action id="a8" commandName="Grid" />
+    </actionGroup>
+    <actionGroup id="ag6" scope="ActionBar" headerText="Record">
+      <action id="a1" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a2" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a3" whenLastCommandName="New" commandName="Insert" />
+      <action id="a4" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+    <actionGroup id="ag7" scope="ActionBar" headerText="Report">
+      <action id="a1" commandName="ReportAsPdf" />
+      <action id="a2" commandName="ReportAsImage" />
+      <action id="a3" commandName="ReportAsExcel" />
+      <action id="a4" commandName="ReportAsWord" />
+    </actionGroup>
+    <actionGroup id="ag8" scope="Row">
+      <action id="a4" whenLastCommandName="Edit" commandName="Update" />
+      <action id="a5" whenLastCommandName="Edit" commandName="Cancel" />
+      <action id="a6" whenLastCommandName="New" commandName="Insert" />
+      <action id="a7" whenLastCommandName="New" commandName="Cancel" />
+    </actionGroup>
+  </actions>
+</dataController>

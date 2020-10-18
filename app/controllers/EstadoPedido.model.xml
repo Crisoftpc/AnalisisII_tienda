@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataModel baseSchema="dbo" baseTable="EstadoPedido" alias="EstadoPedido" created="2020-10-18T13:51:07" modified="2020-10-18T13:51:10" x="20" y="20" xmlns="urn:schemas-codeontime-com:data-model">
+  <foreignKeys>
+    <foreignKey id="TheEstado" parentTableSchema="dbo" parentTableName="Estado" x="313" y="20">
+      <foreignKeyColumn columnName="Estado" parentColumnName="Estado" />
+    </foreignKey>
+  </foreignKeys>
+  <columns>
+    <column name="EstadoPedido" fieldName="EstadoPedido" label="Estado Pedido" />
+    <column name="Descripcion" fieldName="Descripcion" label="Descripcion" />
+    <column name="Estado" fieldName="Estado" label="Estado" aliasColumnName="Nombre" aliasForeignKey="TheEstado" />
+    <column name="Nombre" fieldName="TheEstadoNombre" label="Estado Nombre" foreignKey="TheEstado" />
+  </columns>
+</dataModel>

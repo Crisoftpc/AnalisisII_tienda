@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0">
+  <siteMapNode title="^SiteHome^Home^SiteHome^" description="" url="~/index.html">
+    <siteMapNode title="^HomePath^Home^HomePath^" description="^HomeDesc^Application home page^HomeDesc^" url="~/pages/home" cssClass="Wide" />
+    <siteMapNode title="Pedidos" description="View Pedidos" url="~/pages/pedidos" />
+    <siteMapNode title="Distribuidores" description="View Distribuidores" url="~/pages/distribuidores" />
+    <siteMapNode title="Productos" description="View Productos" url="~/pages/productos" />
+    <siteMapNode title="Repartidores" description="View Repartidores" url="~/pages/repartidores" />
+    <siteMapNode title="Estado Pedido" description="View Estado Pedido" url="~/pages/estado-pedido" />
+    <siteMapNode title="Tipo Persona" description="View Tipo Persona" url="~/pages/tipo-persona" />
+    <siteMapNode title="Estado" description="View Estado" url="~/pages/estado" />
+    <siteMapNode title="Clientes" description="View Clientes" url="~/pages/clientes" />
+    <siteMapNode title="Catalogo Productos" description="View Catalogo Productos" url="~/pages/catalogo-productos" />
+    <siteMapNode title="Pedido Detalle" description="View Pedido Detalle" url="~/pages/pedido-detalle" />
+    <siteMapNode title="^MembershipPath^Membership^MembershipPath^" description="^MembershipDesc^User and role manager^MembershipDesc^" url="~/pages/membership" roles="Administrators" />
+  </siteMapNode>
+</siteMap>

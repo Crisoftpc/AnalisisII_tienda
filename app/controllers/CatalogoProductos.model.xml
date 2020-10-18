@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataModel baseSchema="dbo" baseTable="CatalogoProductos" alias="CatalogoProductos" created="2020-10-18T13:51:36" modified="2020-10-18T13:51:39" x="20" y="20" xmlns="urn:schemas-codeontime-com:data-model">
+  <foreignKeys>
+    <foreignKey id="idDistribuidor" parentTableSchema="dbo" parentTableName="Distribuidores" x="346" y="20">
+      <foreignKeyColumn columnName="idDistribuidor" parentColumnName="IdDistribuidor" />
+    </foreignKey>
+    <foreignKey id="idDistribuidorEstado" parentTableSchema="dbo" parentTableName="Estado" baseForeignKey="idDistribuidor" x="659" y="20">
+      <foreignKeyColumn columnName="Estado" parentColumnName="Estado" />
+    </foreignKey>
+    <foreignKey id="TheidCategoria" parentTableSchema="dbo" parentTableName="Categoria" x="346" y="204">
+      <foreignKeyColumn columnName="idCategoria" parentColumnName="idCategoria" />
+    </foreignKey>
+    <foreignKey id="idProducto" parentTableSchema="dbo" parentTableName="Productos" x="346" y="367">
+      <foreignKeyColumn columnName="idProducto" parentColumnName="IdProducto" />
+    </foreignKey>
+    <foreignKey id="TheEstado" parentTableSchema="dbo" parentTableName="Estado" x="346" y="530">
+      <foreignKeyColumn columnName="Estado" parentColumnName="Estado" />
+    </foreignKey>
+  </foreignKeys>
+  <columns>
+    <column name="idProductoCatalogo" fieldName="IDProductoCatalogo" label="id Producto Catalogo" />
+    <column name="idDistribuidor" fieldName="IDDistribuidor" label="id Distribuidor" aliasColumnName="Nombre" aliasForeignKey="idDistribuidor" />
+    <column name="Nombre" fieldName="IDDistribuidorNombre" label="id Distribuidor Nombre" foreignKey="idDistribuidor" />
+    <column name="Nombre" fieldName="IDDistribuidorEstadoNombre" label="id Distribuidor Estado Nombre" foreignKey="idDistribuidorEstado" />
+    <column name="idCategoria" fieldName="IDCategoria" label="id Categoria" aliasColumnName="NombreCategoria" aliasForeignKey="TheidCategoria" />
+    <column name="NombreCategoria" fieldName="TheidCategoriaNombreCategoria" label="Theid Categoria Nombre Categoria" foreignKey="TheidCategoria" />
+    <column name="idProducto" fieldName="IDProducto" label="id Producto" aliasColumnName="NombreProducto" aliasForeignKey="idProducto" />
+    <column name="NombreProducto" fieldName="IDProductoNombreProducto" label="id Producto Nombre Producto" foreignKey="idProducto" />
+    <column name="Precio" fieldName="Precio" label="Precio" />
+    <column name="Descripcion" fieldName="Descripcion" label="Descripcion" />
+    <column name="Estado" fieldName="Estado" label="Estado" aliasColumnName="Nombre" aliasForeignKey="TheEstado" />
+    <column name="Nombre" fieldName="TheEstadoNombre" label="Estado Nombre" foreignKey="TheEstado" />
+  </columns>
+</dataModel>

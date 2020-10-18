@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dataModel baseSchema="dbo" baseTable="Productos" alias="Productos" created="2020-10-18T13:50:55" modified="2020-10-18T14:04:40" x="20" y="20" xmlns="urn:schemas-codeontime-com:data-model">
+  <foreignKeys />
+  <columns>
+    <column name="IdProducto" fieldName="IDProducto" label="Id Producto" />
+    <column name="NombreProducto" fieldName="NombreProducto" label="Nombre Producto" />
+    <column name="Descripcion" fieldName="Descripcion" label="Descripcion" />
+    <column name="Fotografia" fieldName="Fotografia" label="Fotografia" />
+    <column name="FileName" fieldName="FileName" label="File Name" />
+    <column name="Length" fieldName="Length" label="Length" />
+    <column name="ContentType" fieldName="ContentType" label="Content Type" />
+  </columns>
+</dataModel>
