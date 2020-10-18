@@ -1,2 +1,2 @@
 # AnalisisII_tienda
-Esta aplicacion esta desarrollada
+*Esta aplicacion esta desarrollada*
