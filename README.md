@@ -20,6 +20,8 @@ El usuario va a poder navegar atravez de las pestañas en donde el va a escojer 
 
 Se cuenta con una pestaña para los repartidores que al momento que un usuario compra puede aceptar o no llevar el producto hasta su domicilio.
 
+Los usuarios tendran una login y un password para poder realizar su pedido.
+
 # Imagenes Del Prototipo
 
 ![imagen2](https://user-images.githubusercontent.com/39146100/96386911-c6cdbc00-115b-11eb-92b7-7c549601607d.jpeg)
