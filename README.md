@@ -1,2 +1,2 @@
 # AnalisisII_tienda
-test
+Esta aplicacion esta desarrollada
